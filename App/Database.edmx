@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="welldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblDeedInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitID" Type="bigint" />
+          <Property Name="DeedID" Type="bigint" />
+          <Property Name="UnitName" Type="varchar" MaxLength="100" />
+          <Property Name="Play" Type="nvarchar" MaxLength="200" />
+          <Property Name="Company" Type="nvarchar" MaxLength="200" />
+          <Property Name="RightsHeld" Type="nvarchar" MaxLength="200" />
+          <Property Name="DeedName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Grantor" Type="nvarchar" MaxLength="400" />
+          <Property Name="GrantorAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="GrantorCity" Type="nvarchar" MaxLength="200" />
+          <Property Name="GrantorState" Type="nvarchar" MaxLength="200" />
+          <Property Name="GrantorZip" Type="nvarchar" MaxLength="200" />
+          <Property Name="OwnerNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="TractCity" Type="nvarchar" MaxLength="200" />
+          <Property Name="InstrumentDate1" Type="datetime" />
+          <Property Name="InstrumentNumber1" Type="nvarchar" MaxLength="200" />
+          <Property Name="Book1" Type="nvarchar" MaxLength="200" />
+          <Property Name="InstrumentDate2" Type="datetime" />
+          <Property Name="InstrumentNumber2" Type="nvarchar" MaxLength="200" />
+          <Property Name="Book2" Type="nvarchar" MaxLength="200" />
+          <Property Name="PledgedBank" Type="nvarchar" MaxLength="200" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="LeaseTerm" Type="int" />
+          <Property Name="TermUnit" Type="nvarchar" MaxLength="200" />
+          <Property Name="LeaseExpires" Type="datetime" />
+          <Property Name="AcqCost" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="Referral" Type="nvarchar" MaxLength="200" />
+          <Property Name="CheckNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tract" Type="nvarchar" MaxLength="200" />
+          <Property Name="TractStatus" Type="nvarchar" MaxLength="200" />
+          <Property Name="CountAcres" Type="nvarchar" MaxLength="200" />
+          <Property Name="Royalty" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="ORRIBurden" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="GNRI" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TotalDeedGrossAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TotalDeedNetAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TotalDeedCoAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TractGrossAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TractSurfaceAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TractNetAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="TractCoAcres" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="GrantorTractInt" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="CoTractInt" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="Lot" Type="nvarchar" MaxLength="200" />
+          <Property Name="Block" Type="nvarchar" MaxLength="200" />
+          <Property Name="Addition" Type="nvarchar" MaxLength="200" />
+          <Property Name="DeedLegal" Type="nvarchar(max)" />
+          <Property Name="TractLegal" Type="nvarchar(max)" />
+          <Property Name="Emailed" Type="datetime" />
+          <Property Name="PayStatus" Type="nvarchar" MaxLength="200" />
+          <Property Name="TractDropReason" Type="nvarchar" MaxLength="200" />
+          <Property Name="TractDropDate" Type="datetime" />
+          <Property Name="CalculatedUnitInt" Type="decimal" Precision="16" Scale="8" />
+          <Property Name="FileLoc" Type="nvarchar" MaxLength="200" />
+          <Property Name="DeedType" Type="nvarchar" MaxLength="200" />
+          <Property Name="DeedForm" Type="nvarchar" MaxLength="200" />
+          <Property Name="Provisions" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProvisionRemarks" Type="nvarchar" MaxLength="200" />
+          <Property Name="NextObDate" Type="datetime" />
+          <Property Name="Mortgagee" Type="nvarchar" MaxLength="200" />
+          <Property Name="SubordStatus" Type="nvarchar" MaxLength="200" />
+          <Property Name="SentToBank" Type="datetime" />
+          <Property Name="SentToOperator" Type="datetime" />
+          <Property Name="RcvdCol" Type="datetime" />
+          <Property Name="SubordRecording" Type="nvarchar" MaxLength="200" />
+          <Property Name="SubordType" Type="nvarchar" MaxLength="200" />
+          <Property Name="SetupDate" Type="datetime" />
+          <Property Name="DPULease" Type="nvarchar" MaxLength="200" />
+          <Property Name="DOLease" Type="nvarchar" MaxLength="200" />
+          <Property Name="P12TractNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="Abstract" Type="nvarchar" MaxLength="200" />
+          <Property Name="Survey" Type="nvarchar" MaxLength="200" />
+          <Property Name="TractName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Lessee" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContractNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="DeedFile" Type="varchar" MaxLength="200" />
+          <Property Name="TitleFile" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblLandMan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TaxID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="welldbModelStoreContainer">
+          <EntitySet Name="tblDeedInfo" EntityType="Self.tblDeedInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLandMan" EntityType="Self.tblLandMan" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="welldbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="welldbEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="tblDeedInfoes" EntityType="welldbModel.tblDeedInfo" />
+          <EntitySet Name="tblLandMen" EntityType="welldbModel.tblLandMan" />
+        </EntityContainer>
+        <EntityType Name="tblDeedInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitID" Type="Int64" />
+          <Property Name="DeedID" Type="Int64" />
+          <Property Name="UnitName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Play" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RightsHeld" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DeedName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Grantor" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorCity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorState" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorZip" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TractCity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="InstrumentDate1" Type="DateTime" Precision="3" />
+          <Property Name="InstrumentNumber1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Book1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="InstrumentDate2" Type="DateTime" Precision="3" />
+          <Property Name="InstrumentNumber2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Book2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PledgedBank" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="LeaseTerm" Type="Int32" />
+          <Property Name="TermUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LeaseExpires" Type="DateTime" Precision="3" />
+          <Property Name="AcqCost" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="Referral" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CheckNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tract" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TractStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CountAcres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Royalty" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="ORRIBurden" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="GNRI" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TotalDeedGrossAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TotalDeedNetAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TotalDeedCoAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TractGrossAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TractSurfaceAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TractNetAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="TractCoAcres" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="GrantorTractInt" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="CoTractInt" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="Lot" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Block" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Addition" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DeedLegal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TractLegal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Emailed" Type="DateTime" Precision="3" />
+          <Property Name="PayStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TractDropReason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TractDropDate" Type="DateTime" Precision="3" />
+          <Property Name="CalculatedUnitInt" Type="Decimal" Precision="16" Scale="8" />
+          <Property Name="FileLoc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DeedType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DeedForm" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Provisions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProvisionRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NextObDate" Type="DateTime" Precision="3" />
+          <Property Name="Mortgagee" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SubordStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SentToBank" Type="DateTime" Precision="3" />
+          <Property Name="SentToOperator" Type="DateTime" Precision="3" />
+          <Property Name="RcvdCol" Type="DateTime" Precision="3" />
+          <Property Name="SubordRecording" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SubordType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SetupDate" Type="DateTime" Precision="3" />
+          <Property Name="DPULease" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DOLease" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="P12TractNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Abstract" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Survey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TractName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Lessee" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContractNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeedFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TitleFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblLandMan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="welldbModelStoreContainer" CdmEntityContainer="welldbEntities" >
+          <EntitySetMapping Name="tblDeedInfoes">
+            <EntityTypeMapping TypeName="welldbModel.tblDeedInfo">
+              <MappingFragment StoreEntitySet="tblDeedInfo">
+                <ScalarProperty Name="TitleFile" ColumnName="TitleFile" />
+                <ScalarProperty Name="DeedFile" ColumnName="DeedFile" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+                <ScalarProperty Name="Lessee" ColumnName="Lessee" />
+                <ScalarProperty Name="TractName" ColumnName="TractName" />
+                <ScalarProperty Name="Survey" ColumnName="Survey" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="P12TractNumber" ColumnName="P12TractNumber" />
+                <ScalarProperty Name="DOLease" ColumnName="DOLease" />
+                <ScalarProperty Name="DPULease" ColumnName="DPULease" />
+                <ScalarProperty Name="SetupDate" ColumnName="SetupDate" />
+                <ScalarProperty Name="SubordType" ColumnName="SubordType" />
+                <ScalarProperty Name="SubordRecording" ColumnName="SubordRecording" />
+                <ScalarProperty Name="RcvdCol" ColumnName="RcvdCol" />
+                <ScalarProperty Name="SentToOperator" ColumnName="SentToOperator" />
+                <ScalarProperty Name="SentToBank" ColumnName="SentToBank" />
+                <ScalarProperty Name="SubordStatus" ColumnName="SubordStatus" />
+                <ScalarProperty Name="Mortgagee" ColumnName="Mortgagee" />
+                <ScalarProperty Name="NextObDate" ColumnName="NextObDate" />
+                <ScalarProperty Name="ProvisionRemarks" ColumnName="ProvisionRemarks" />
+                <ScalarProperty Name="Provisions" ColumnName="Provisions" />
+                <ScalarProperty Name="DeedForm" ColumnName="DeedForm" />
+                <ScalarProperty Name="DeedType" ColumnName="DeedType" />
+                <ScalarProperty Name="FileLoc" ColumnName="FileLoc" />
+                <ScalarProperty Name="CalculatedUnitInt" ColumnName="CalculatedUnitInt" />
+                <ScalarProperty Name="TractDropDate" ColumnName="TractDropDate" />
+                <ScalarProperty Name="TractDropReason" ColumnName="TractDropReason" />
+                <ScalarProperty Name="PayStatus" ColumnName="PayStatus" />
+                <ScalarProperty Name="Emailed" ColumnName="Emailed" />
+                <ScalarProperty Name="TractLegal" ColumnName="TractLegal" />
+                <ScalarProperty Name="DeedLegal" ColumnName="DeedLegal" />
+                <ScalarProperty Name="Addition" ColumnName="Addition" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Lot" ColumnName="Lot" />
+                <ScalarProperty Name="CoTractInt" ColumnName="CoTractInt" />
+                <ScalarProperty Name="GrantorTractInt" ColumnName="GrantorTractInt" />
+                <ScalarProperty Name="TractCoAcres" ColumnName="TractCoAcres" />
+                <ScalarProperty Name="TractNetAcres" ColumnName="TractNetAcres" />
+                <ScalarProperty Name="TractSurfaceAcres" ColumnName="TractSurfaceAcres" />
+                <ScalarProperty Name="TractGrossAcres" ColumnName="TractGrossAcres" />
+                <ScalarProperty Name="TotalDeedCoAcres" ColumnName="TotalDeedCoAcres" />
+                <ScalarProperty Name="TotalDeedNetAcres" ColumnName="TotalDeedNetAcres" />
+                <ScalarProperty Name="TotalDeedGrossAcres" ColumnName="TotalDeedGrossAcres" />
+                <ScalarProperty Name="GNRI" ColumnName="GNRI" />
+                <ScalarProperty Name="ORRIBurden" ColumnName="ORRIBurden" />
+                <ScalarProperty Name="Royalty" ColumnName="Royalty" />
+                <ScalarProperty Name="CountAcres" ColumnName="CountAcres" />
+                <ScalarProperty Name="TractStatus" ColumnName="TractStatus" />
+                <ScalarProperty Name="Tract" ColumnName="Tract" />
+                <ScalarProperty Name="CheckNumber" ColumnName="CheckNumber" />
+                <ScalarProperty Name="Referral" ColumnName="Referral" />
+                <ScalarProperty Name="AcqCost" ColumnName="AcqCost" />
+                <ScalarProperty Name="LeaseExpires" ColumnName="LeaseExpires" />
+                <ScalarProperty Name="TermUnit" ColumnName="TermUnit" />
+                <ScalarProperty Name="LeaseTerm" ColumnName="LeaseTerm" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="PledgedBank" ColumnName="PledgedBank" />
+                <ScalarProperty Name="Book2" ColumnName="Book2" />
+                <ScalarProperty Name="InstrumentNumber2" ColumnName="InstrumentNumber2" />
+                <ScalarProperty Name="InstrumentDate2" ColumnName="InstrumentDate2" />
+                <ScalarProperty Name="Book1" ColumnName="Book1" />
+                <ScalarProperty Name="InstrumentNumber1" ColumnName="InstrumentNumber1" />
+                <ScalarProperty Name="InstrumentDate1" ColumnName="InstrumentDate1" />
+                <ScalarProperty Name="TractCity" ColumnName="TractCity" />
+                <ScalarProperty Name="OwnerNumber" ColumnName="OwnerNumber" />
+                <ScalarProperty Name="GrantorZip" ColumnName="GrantorZip" />
+                <ScalarProperty Name="GrantorState" ColumnName="GrantorState" />
+                <ScalarProperty Name="GrantorCity" ColumnName="GrantorCity" />
+                <ScalarProperty Name="GrantorAddress" ColumnName="GrantorAddress" />
+                <ScalarProperty Name="Grantor" ColumnName="Grantor" />
+                <ScalarProperty Name="DeedName" ColumnName="DeedName" />
+                <ScalarProperty Name="RightsHeld" ColumnName="RightsHeld" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Play" ColumnName="Play" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="DeedID" ColumnName="DeedID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLandMen">
+            <EntityTypeMapping TypeName="welldbModel.tblLandMan">
+              <MappingFragment StoreEntitySet="tblLandMan">
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
