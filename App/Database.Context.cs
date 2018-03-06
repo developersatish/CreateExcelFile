@@ -12,6 +12,8 @@ namespace App
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class welldbEntities : DbContext
     {
@@ -27,5 +29,15 @@ namespace App
     
         public virtual DbSet<tblDeedInfo> tblDeedInfoes { get; set; }
         public virtual DbSet<tblLandMan> tblLandMen { get; set; }
+    
+        public virtual ObjectResult<usp_AssetDumpUnit_Result> usp_AssetDumpUnit()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_AssetDumpUnit_Result>("usp_AssetDumpUnit");
+        }
+    
+        public virtual ObjectResult<usp_AssetDumpWell_Result> usp_AssetDumpWell()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_AssetDumpWell_Result>("usp_AssetDumpWell");
+        }
     }
 }

@@ -101,6 +101,8 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="ModifyDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <Function Name="usp_AssetDumpUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_AssetDumpWell" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="welldbModelStoreContainer">
           <EntitySet Name="tblDeedInfo" EntityType="Self.tblDeedInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLandMan" EntityType="Self.tblLandMan" Schema="dbo" store:Type="Tables" />
@@ -112,6 +114,8 @@
         <EntityContainer Name="welldbEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="tblDeedInfoes" EntityType="welldbModel.tblDeedInfo" />
           <EntitySet Name="tblLandMen" EntityType="welldbModel.tblLandMan" />
+          <FunctionImport Name="usp_AssetDumpUnit" ReturnType="Collection(welldbModel.usp_AssetDumpUnit_Result)" />
+          <FunctionImport Name="usp_AssetDumpWell" ReturnType="Collection(welldbModel.usp_AssetDumpWell_Result)" />
         </EntityContainer>
         <EntityType Name="tblDeedInfo">
           <Key>
@@ -209,6 +213,158 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <ComplexType Name="usp_AssetDumpUnit_Result">
+          <Property Type="Int64" Name="DeedID" Nullable="false" />
+          <Property Type="String" Name="DeedName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Play" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterestType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Entity" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Landman" Nullable="true" MaxLength="401" />
+          <Property Type="String" Name="JVPartner" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="JVPercentage" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="JVElection" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="JVElectionAmount" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="DateTime" Name="JVElectionDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PledgedBank" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="EffectiveDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LOIInstrumentDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="LOIDaysToClose" Nullable="true" />
+          <Property Type="DateTime" Name="LOIExpirationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DeedInstrumentDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="OPNotificationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Recording_" Nullable="true" MaxLength="45" />
+          <Property Type="Decimal" Name="FinalPrice" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="FileLocation" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RecordationBook" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CheckSentDate" Nullable="true" />
+          <Property Type="String" Name="CheckNumber" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DeedStatus" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="AssetStatus" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="Offer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="County" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="RoyaltyDec" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="GrossAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Double" Name="PercentPurchased" Nullable="true" />
+          <Property Type="Decimal" Name="NetAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="String" Name="SurfaceIncluded" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Surface_" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="String" Name="RightsHeld" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="LeaseDate" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="LeaseTerm" Nullable="true" />
+          <Property Type="DateTime" Name="LeaseExpiryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LeaseExtension" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CostFree" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DepthSevered" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="NPRIInterest" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="NPRIBurden" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="NetRoyaltyAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="NetCompanyAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="TractPurchasePrice" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Sec" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Town" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Range" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Quartering" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Block" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Abstract" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="HeldByProduction" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TotalUnitAcres" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NetTractUnitAcres" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="UnitPurchasePrice" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="WellName" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="APINumber" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="DrillType" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PortalStatus" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="WellStatus" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Allocation" Nullable="true" />
+          <Property Type="String" Name="PrimaryOperator" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondaryOperator" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PayStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Decimal" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="DODecimal" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="String" Name="DOStatus" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="DOReceivedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DOSentDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="usp_AssetDumpWell_Result">
+          <Property Type="Int64" Name="DeedID" Nullable="false" />
+          <Property Type="String" Name="DeedName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Play" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterestType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Entity" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Landman" Nullable="true" MaxLength="401" />
+          <Property Type="String" Name="JVPartner" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="JVPercentage" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="JVElection" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="JVElectionAmount" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="DateTime" Name="JVElectionDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PledgedBank" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="EffectiveDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LOIInstrumentDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="LOIDaysToClose" Nullable="true" />
+          <Property Type="DateTime" Name="LOIExpirationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DeedInstrumentDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="OPNotificationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Recording_" Nullable="true" MaxLength="45" />
+          <Property Type="Decimal" Name="FinalPrice" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="FileLocation" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RecordationBook" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CheckSentDate" Nullable="true" />
+          <Property Type="String" Name="CheckNumber" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DeedStatus" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="AssetStatus" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="Offer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="County" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="RoyaltyDec" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="GrossAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Double" Name="PercentPurchased" Nullable="true" />
+          <Property Type="Decimal" Name="NetAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="String" Name="SurfaceIncluded" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Surface_" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="String" Name="RightsHeld" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="LeaseDate" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="LeaseTerm" Nullable="true" />
+          <Property Type="DateTime" Name="LeaseExpiryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LeaseExtension" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CostFree" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DepthSevered" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="NPRIInterest" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="NPRIBurden" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="NetRoyaltyAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="NetCompanyAcres" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="TractPurchasePrice" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Sec" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Town" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Range" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Quartering" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Block" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Abstract" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="HeldByProduction" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WellName" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="APINumber" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="DrillType" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PortalStatus" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="WellStatus" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Allocation" Nullable="true" />
+          <Property Type="String" Name="PrimaryOperator" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondaryOperator" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PayStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Decimal" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="DODecimal" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="String" Name="DOStatus" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="DOReceivedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DOSentDate" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -313,6 +469,166 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_AssetDumpUnit" FunctionName="welldbModel.Store.usp_AssetDumpUnit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="welldbModel.usp_AssetDumpUnit_Result">
+                <ScalarProperty Name="DeedID" ColumnName="DeedID" />
+                <ScalarProperty Name="DeedName" ColumnName="DeedName" />
+                <ScalarProperty Name="Play" ColumnName="Play" />
+                <ScalarProperty Name="InterestType" ColumnName="InterestType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="Landman" ColumnName="Landman" />
+                <ScalarProperty Name="JVPartner" ColumnName="JVPartner" />
+                <ScalarProperty Name="JVPercentage" ColumnName="JVPercentage" />
+                <ScalarProperty Name="JVElection" ColumnName="JVElection" />
+                <ScalarProperty Name="JVElectionAmount" ColumnName="JVElectionAmount" />
+                <ScalarProperty Name="JVElectionDate" ColumnName="JVElectionDate" />
+                <ScalarProperty Name="PledgedBank" ColumnName="PledgedBank" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="LOIInstrumentDate" ColumnName="LOIInstrumentDate" />
+                <ScalarProperty Name="LOIDaysToClose" ColumnName="LOIDaysToClose" />
+                <ScalarProperty Name="LOIExpirationDate" ColumnName="LOIExpirationDate" />
+                <ScalarProperty Name="DeedInstrumentDate" ColumnName="DeedInstrumentDate" />
+                <ScalarProperty Name="OPNotificationDate" ColumnName="OPNotificationDate" />
+                <ScalarProperty Name="Recording_" ColumnName="Recording#" />
+                <ScalarProperty Name="FinalPrice" ColumnName="FinalPrice" />
+                <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+                <ScalarProperty Name="RecordationBook" ColumnName="RecordationBook" />
+                <ScalarProperty Name="CheckSentDate" ColumnName="CheckSentDate" />
+                <ScalarProperty Name="CheckNumber" ColumnName="CheckNumber" />
+                <ScalarProperty Name="DeedStatus" ColumnName="DeedStatus" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+                <ScalarProperty Name="Offer" ColumnName="Offer" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="RoyaltyDec" ColumnName="RoyaltyDec" />
+                <ScalarProperty Name="GrossAcres" ColumnName="GrossAcres" />
+                <ScalarProperty Name="PercentPurchased" ColumnName="PercentPurchased" />
+                <ScalarProperty Name="NetAcres" ColumnName="NetAcres" />
+                <ScalarProperty Name="SurfaceIncluded" ColumnName="SurfaceIncluded" />
+                <ScalarProperty Name="Surface_" ColumnName="Surface$" />
+                <ScalarProperty Name="RightsHeld" ColumnName="RightsHeld" />
+                <ScalarProperty Name="LeaseDate" ColumnName="LeaseDate" />
+                <ScalarProperty Name="LeaseTerm" ColumnName="LeaseTerm" />
+                <ScalarProperty Name="LeaseExpiryDate" ColumnName="LeaseExpiryDate" />
+                <ScalarProperty Name="LeaseExtension" ColumnName="LeaseExtension" />
+                <ScalarProperty Name="CostFree" ColumnName="CostFree" />
+                <ScalarProperty Name="DepthSevered" ColumnName="DepthSevered" />
+                <ScalarProperty Name="NPRIInterest" ColumnName="NPRIInterest" />
+                <ScalarProperty Name="NPRIBurden" ColumnName="NPRIBurden" />
+                <ScalarProperty Name="NetRoyaltyAcres" ColumnName="NetRoyaltyAcres" />
+                <ScalarProperty Name="NetCompanyAcres" ColumnName="NetCompanyAcres" />
+                <ScalarProperty Name="TractPurchasePrice" ColumnName="TractPurchasePrice" />
+                <ScalarProperty Name="Sec" ColumnName="Sec" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="Quartering" ColumnName="Quartering" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="HeldByProduction" ColumnName="HeldByProduction" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="TotalUnitAcres" ColumnName="TotalUnitAcres" />
+                <ScalarProperty Name="NetTractUnitAcres" ColumnName="NetTractUnitAcres" />
+                <ScalarProperty Name="UnitPurchasePrice" ColumnName="UnitPurchasePrice" />
+                <ScalarProperty Name="WellName" ColumnName="WellName" />
+                <ScalarProperty Name="APINumber" ColumnName="APINumber" />
+                <ScalarProperty Name="DrillType" ColumnName="DrillType" />
+                <ScalarProperty Name="PortalStatus" ColumnName="PortalStatus" />
+                <ScalarProperty Name="WellStatus" ColumnName="WellStatus" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="PrimaryOperator" ColumnName="PrimaryOperator" />
+                <ScalarProperty Name="SecondaryOperator" ColumnName="SecondaryOperator" />
+                <ScalarProperty Name="PayStatus" ColumnName="PayStatus" />
+                <ScalarProperty Name="Decimal" ColumnName="Decimal" />
+                <ScalarProperty Name="DODecimal" ColumnName="DODecimal" />
+                <ScalarProperty Name="DOStatus" ColumnName="DOStatus" />
+                <ScalarProperty Name="DOReceivedDate" ColumnName="DOReceivedDate" />
+                <ScalarProperty Name="DOSentDate" ColumnName="DOSentDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_AssetDumpWell" FunctionName="welldbModel.Store.usp_AssetDumpWell">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="welldbModel.usp_AssetDumpWell_Result">
+                <ScalarProperty Name="DeedID" ColumnName="DeedID" />
+                <ScalarProperty Name="DeedName" ColumnName="DeedName" />
+                <ScalarProperty Name="Play" ColumnName="Play" />
+                <ScalarProperty Name="InterestType" ColumnName="InterestType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="Landman" ColumnName="Landman" />
+                <ScalarProperty Name="JVPartner" ColumnName="JVPartner" />
+                <ScalarProperty Name="JVPercentage" ColumnName="JVPercentage" />
+                <ScalarProperty Name="JVElection" ColumnName="JVElection" />
+                <ScalarProperty Name="JVElectionAmount" ColumnName="JVElectionAmount" />
+                <ScalarProperty Name="JVElectionDate" ColumnName="JVElectionDate" />
+                <ScalarProperty Name="PledgedBank" ColumnName="PledgedBank" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="LOIInstrumentDate" ColumnName="LOIInstrumentDate" />
+                <ScalarProperty Name="LOIDaysToClose" ColumnName="LOIDaysToClose" />
+                <ScalarProperty Name="LOIExpirationDate" ColumnName="LOIExpirationDate" />
+                <ScalarProperty Name="DeedInstrumentDate" ColumnName="DeedInstrumentDate" />
+                <ScalarProperty Name="OPNotificationDate" ColumnName="OPNotificationDate" />
+                <ScalarProperty Name="Recording_" ColumnName="Recording#" />
+                <ScalarProperty Name="FinalPrice" ColumnName="FinalPrice" />
+                <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+                <ScalarProperty Name="RecordationBook" ColumnName="RecordationBook" />
+                <ScalarProperty Name="CheckSentDate" ColumnName="CheckSentDate" />
+                <ScalarProperty Name="CheckNumber" ColumnName="CheckNumber" />
+                <ScalarProperty Name="DeedStatus" ColumnName="DeedStatus" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+                <ScalarProperty Name="Offer" ColumnName="Offer" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="RoyaltyDec" ColumnName="RoyaltyDec" />
+                <ScalarProperty Name="GrossAcres" ColumnName="GrossAcres" />
+                <ScalarProperty Name="PercentPurchased" ColumnName="PercentPurchased" />
+                <ScalarProperty Name="NetAcres" ColumnName="NetAcres" />
+                <ScalarProperty Name="SurfaceIncluded" ColumnName="SurfaceIncluded" />
+                <ScalarProperty Name="Surface_" ColumnName="Surface$" />
+                <ScalarProperty Name="RightsHeld" ColumnName="RightsHeld" />
+                <ScalarProperty Name="LeaseDate" ColumnName="LeaseDate" />
+                <ScalarProperty Name="LeaseTerm" ColumnName="LeaseTerm" />
+                <ScalarProperty Name="LeaseExpiryDate" ColumnName="LeaseExpiryDate" />
+                <ScalarProperty Name="LeaseExtension" ColumnName="LeaseExtension" />
+                <ScalarProperty Name="CostFree" ColumnName="CostFree" />
+                <ScalarProperty Name="DepthSevered" ColumnName="DepthSevered" />
+                <ScalarProperty Name="NPRIInterest" ColumnName="NPRIInterest" />
+                <ScalarProperty Name="NPRIBurden" ColumnName="NPRIBurden" />
+                <ScalarProperty Name="NetRoyaltyAcres" ColumnName="NetRoyaltyAcres" />
+                <ScalarProperty Name="NetCompanyAcres" ColumnName="NetCompanyAcres" />
+                <ScalarProperty Name="TractPurchasePrice" ColumnName="TractPurchasePrice" />
+                <ScalarProperty Name="Sec" ColumnName="Sec" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="Quartering" ColumnName="Quartering" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="HeldByProduction" ColumnName="HeldByProduction" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WellName" ColumnName="WellName" />
+                <ScalarProperty Name="APINumber" ColumnName="APINumber" />
+                <ScalarProperty Name="DrillType" ColumnName="DrillType" />
+                <ScalarProperty Name="PortalStatus" ColumnName="PortalStatus" />
+                <ScalarProperty Name="WellStatus" ColumnName="WellStatus" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="PrimaryOperator" ColumnName="PrimaryOperator" />
+                <ScalarProperty Name="SecondaryOperator" ColumnName="SecondaryOperator" />
+                <ScalarProperty Name="PayStatus" ColumnName="PayStatus" />
+                <ScalarProperty Name="Decimal" ColumnName="Decimal" />
+                <ScalarProperty Name="DODecimal" ColumnName="DODecimal" />
+                <ScalarProperty Name="DOStatus" ColumnName="DOStatus" />
+                <ScalarProperty Name="DOReceivedDate" ColumnName="DOReceivedDate" />
+                <ScalarProperty Name="DOSentDate" ColumnName="DOSentDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

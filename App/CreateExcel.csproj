@@ -77,6 +77,12 @@
     <Compile Include="tblLandMan.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_AssetDumpUnit_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_AssetDumpWell_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -12,7 +12,7 @@ namespace App
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }        
+        public string LastName { get; set; }
         public DateTime Date { get; set; }
     }
     class Program
@@ -28,22 +28,16 @@ namespace App
             {
                 using (var db = new welldbEntities())
                 {
-                    IEnumerable<DataModel> data = db.tblLandMen.Select(s => new DataModel()
-                    {
-                        FirstName = s.FirstName,
-                        LastName = s.LastName,
-                        Date = s.CreateDate,
-                        ID = s.ID
-                    }).ToList();
+                    IEnumerable<usp_AssetDumpUnit_Result> data = db.usp_AssetDumpUnit().ToList();
                     string file = @"E:\Book1.xls";
                     //if (!File.Exists(file))
                     //    File.Create(file);
 
                     Workbook workbook = new Workbook();
-                    Worksheet worksheet = new Worksheet("First Sheet");
+                    Worksheet worksheet = new Worksheet("Unit");
 
                     //Write Header
-                    DataModel tbl = new DataModel();
+                    usp_AssetDumpUnit_Result tbl = new usp_AssetDumpUnit_Result();
 
                     var headers = tbl.GetType().GetProperties();
                     int head = 0;
@@ -66,11 +60,13 @@ namespace App
                             Cell cellData = null;
 
                             if (prop.PropertyType == typeof(DateTime))
-                                cellData = new Cell((DateTime)value);
+                                cellData = new Cell((DateTime)value, @"YYYY-MM-DD");
                             else
-                                cellData = new Cell(value ?? "");
+                                cellData = new Cell(value != null ? Convert.ToString(value) : "");
 
+                            worksheet.Cells.ColumnWidth[(ushort)cell, (ushort)row] = 3000;
                             worksheet.Cells[cell, row] = cellData;
+
                             row++;
                         }
 
@@ -82,9 +78,9 @@ namespace App
                     //{
                     //    var pro = data[i].GetType().GetProperties();
                     //}
-
                     workbook.Worksheets.Add(worksheet);
                     workbook.Save(file);
+
                 }
 
 
